@@ -9,9 +9,10 @@ template <class T>
 class monde 
 {
 public:
+  monde();
   monde(int, int);
-  monde(const monde&);
-  monde& operator= (const monde&);
+  monde(const monde<T>&);
+  monde& operator= (const monde<T>&);
   void affiche(ostream&);
   
 private :
