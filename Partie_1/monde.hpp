@@ -5,7 +5,6 @@
 
 using namespace std;
 
-template <class T>
 class monde 
 {
 public:
@@ -16,10 +15,9 @@ public:
   void affiche(ostream&);
   
 private :
-  T *** tab;
   int heigth,length;
 };
 
-template <class T> ostream& operator<<(ostream&, const monde<T>&);
+ostream& operator<<(ostream&, const monde<T>&);
 
 #endif
