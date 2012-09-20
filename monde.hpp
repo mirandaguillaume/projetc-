@@ -12,7 +12,7 @@ public:
   int getLength() const {return length;}
   int getHeight() const {return height;}
   
-private :
+protected :
   int height,length;
 };
 
