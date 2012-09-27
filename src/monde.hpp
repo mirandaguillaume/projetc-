@@ -1,8 +1,6 @@
 #ifndef DEF_MONDE
 #define DEF_MONDE
 
-#define NBMIN 10
-
 #include <iostream>
 #include "square.hpp"
 
