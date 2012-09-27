@@ -2,17 +2,23 @@
 #define DEF_MONDE
 
 #include <iostream>
+#include "square.hpp"
 
 using namespace std;
 
 class monde 
 {
 public:
-  monde(int height=10, int length=10) : height(height) , length(length) {}
+  monde (int,int);
+  monde (const monde&);
+  monde& operator = (const monde&);
+  ~monde();
   int getLength() const {return length;}
   int getHeight() const {return height;}
   
-protected :
+  
+private :
+  square ** matrice;
   int height,length;
 };
 
