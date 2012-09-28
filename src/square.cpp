@@ -19,3 +19,6 @@ square& square::operator = (const square& s)
     }
   return *this;
 }
+
+square::~square()
+{if (a) delete a;}
