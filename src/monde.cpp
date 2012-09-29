@@ -50,6 +50,8 @@ monde::~monde()
     {
       for (int i=0;i<height;i++)
 	if (matrice[i]) delete [] matrice[i];
-      delete matrice;
+      delete [] matrice;
     }
 }
+
+

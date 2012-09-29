@@ -10,8 +10,7 @@ class actor {};
 class square
 {
 public :
-  square();
-  square(int,actor);
+  square(int i=0) :nb(i) {}
   square(const square&);
   square& operator = (const square&);
   ~square();
@@ -19,7 +18,6 @@ public :
   int getNb() const {return nb;}
 private :
   int nb;
-  actor * a;
 };
 
 ostream& operator << (ostream&, const square&);
