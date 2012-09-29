@@ -3,11 +3,13 @@
 
 using namespace std;
 
+square::square() : nb(0), a(NULL) {}
+
 square::square(int i,actor act) : nb(i)
-{ a=new actor(); }
+{ a=new actor(act); }
 
 square::square(const square& s) : nb(s.nb)
-{ a=new actor(); }
+{ a=new actor(*s.a); }
 
 square& square::operator = (const square& s)
 {

@@ -10,6 +10,7 @@ class actor {};
 class square
 {
 public :
+  square();
   square(int,actor);
   square(const square&);
   square& operator = (const square&);
