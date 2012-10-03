@@ -1,11 +1,10 @@
 #include <iostream>
-#include "monde.hpp"
+#include "basic_world.hpp"
 
 using namespace std;
 
 int main()
 {
-  monde m(3,2);
-  
+  basic_world b;
   return 0;
 }
