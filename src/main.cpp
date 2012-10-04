@@ -1,10 +1,10 @@
 #include <iostream>
-#include "basic_world.hpp"
+#include "cells_world.hpp"
 
 using namespace std;
 
 int main()
 {
-  basic_world b;
+  cells_world b;
   return 0;
 }

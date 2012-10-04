@@ -5,20 +5,23 @@
 
 using namespace std;
 
+
+template <typename T=int>
 class basic_world 
 {
 public:
-  basic_world (int,int);
-  basic_world (const basic_world&);
+  basic_world<T>() : matrix(NULL), length(0), height(0) {}
+  basic_world<T> (int,int);
+  basic_world<T> (const basic_world&);
   basic_world& operator = (const basic_world&);
-  ~basic_world();
   virtual void tour() =0;
   virtual void init() =0;
-  virtual void affiche(); //On verra si on redéfini plus tard
-  
+  void affiche(); //On verra si on redéfini plus tard
+  virtual ~basic_world(); 
+
  
-private :
-  bool ** matrix;
+protected:
+  T ** matrix;
   int height,length;
 };
 
