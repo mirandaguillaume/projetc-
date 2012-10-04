@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
-  cells_world b;
+  cells_world b,c;
+  b=c;
   return 0;
 }
