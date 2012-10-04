@@ -1,8 +1,9 @@
-
 #ifndef DEF_BASIC_WORLD
 #define DEF_BASIC_WORLD
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
