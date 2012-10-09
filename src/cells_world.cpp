@@ -12,30 +12,14 @@ void cells_world::tour()
 
 void cells_world::init()
 {
-  int x=rand()%height,y=rand()%height,cpt(0),choice;
-  bool done[8];
-  for (int i=0;i<height;i++)
-    for (int j=0;j<length;j++)
-      matrix[i][j]=0;
-  while (cpt<3)
+  int i,j;
+  for (int n=0;n<(height*length)/3;n++)
     {
-      choice=rand()%8;
-      if (!done[choice]) 
-	{
-	  cpt++;
-	  done[choice]=true;
-	  switch (choice)
-	    {
-	    case 0 : matrix[x+1][y+1]=true; break; 
-	    case 1 : matrix[x+1][y]=true; break; 
-	    case 2 : matrix[x+1][y-1]=true; break; 
-	    case 3 : matrix[x][y+1]=true; break; 
-	    case 4 : matrix[x][y-1]=true; break; 
-	    case 5 : matrix[x-1][y+1]=true; break; 
-	    case 6 : matrix[x-1][y]=true; break; 
-	    case 7 : matrix[x-1][y-1]=true; break; 
-	    }
-	}
+      do {
+	i=rand()%height;
+	j=rand()%length;
+      } while (matrix[i][j]);
+      matrix[i][j]=true;
     }
 }
 
@@ -52,3 +36,9 @@ int cells_world::count_neighbour(int i,int j)
   if (matrix[i+1][j+1]) cpt++;
   return cpt;
 }
+
+void cells_world::affiche()
+{
+
+}
+
