@@ -15,9 +15,7 @@ class actor {
   int setX(int a){x=a;}
   int setY(int b){y=b;}
 
-
-
-
+  actor(int i, int j) : x(i), y(j) {}
 
 };
 
