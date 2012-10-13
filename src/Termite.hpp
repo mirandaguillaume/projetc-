@@ -5,4 +5,9 @@
 
 using namespace std;
 
-class termite
+class termite : public actor {
+
+  bool carry;
+  
+  termite(int i = 0, int j = 0, ) : actor (i,j) {carry = false;}
+#endif
