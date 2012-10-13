@@ -59,8 +59,53 @@ public:
 
   virtual void tour() =0;
   virtual void init() =0;
-  void affiche(); //On verra si on redéfini plus tard
- 
+
+
+
+ void display__separotor_ligne(){
+   for(int i=0;i<length;i++){
+    if(i==0)cout<<"├—";
+    else{cout<<"┼—";
+      if(i==length-1)cout<<"┤"<<endl;}}
+}
+
+void display_informations
+
+  
+void display(){
+  for(int l=0;l<length;l++)// boucle pour afficher la ligne du hau
+    if(l==0)
+      cout<<"┌———";
+    else
+      cout<<"┬———";
+  cout<<"┐"<<endl;
+  for(int i=0;i<height;i++)
+    {
+      for(int j=0;j<length;j++){
+	if(matrice[i][j]!=NULL){
+	  display_informations(i,j);// on affiche les informations liés à l'acteur
+	}
+	else 
+	  cout<<"│   ";}
+      cout<<"│"<<endl;
+      if(i<height-1){
+	for(int i=0;i<length;i++) // boucle pour ligne séparatrice
+	  {
+	    if(i==0)cout<<"├———";
+	    else
+	      {
+		cout<<"┼———";
+		if(i==length-1)
+		  cout<<"┤"<<endl;
+	      }
+	  }
+      }
+      for(int l=0;l<m;l++) // boucle pour afficher la ligne du bas
+	if(l==0)cout<<"└———";
+	else{cout<<"┴———";}
+      cout<<"┘"<<endl;
+    }
+}
   virtual ~basic_world() 
   {
     if (matrix)

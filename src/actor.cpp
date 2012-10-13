@@ -7,7 +7,7 @@ using namespace std;
 
 class actor {
 
-  int x,y;
+  int x,y; // coordonnées de l'acteur
 
   int getX()const{return x;}
   int getY()const{return y;}
