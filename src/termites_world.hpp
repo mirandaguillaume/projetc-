@@ -15,4 +15,6 @@ public :
 	  xp = rand()%x;
 	  yp = rand()%y;
 	  if(!occuped(xp,yp))
+	    actors[nb_t-1] = new termite (xp, yp);
+	  
 	  
