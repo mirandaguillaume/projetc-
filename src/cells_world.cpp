@@ -1,6 +1,6 @@
 #include "cells_world.hpp"
 
-void cells_world::tour()
+void cells_world::lap()
 {
   for (int i=0;i<height;i++)
     for (int j=0;j<length;j++)
@@ -37,7 +37,7 @@ int cells_world::count_neighbour(int i,int j)
   return cpt;
 }
 
-void cells_world::affiche()
+void cells_world::display()
 {
 
 }

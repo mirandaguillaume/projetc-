@@ -18,6 +18,6 @@ class actors_world: public basic_world{
 
 
 protected:
-  actor * list;
+  actor * actors;
   int nbActors;
 };

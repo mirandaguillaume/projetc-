@@ -7,11 +7,11 @@ class cells_world : public basic_world<bool>
 {
 public :
   cells_world(int i=0,int j=0) : basic_world<bool>(i,j) {}
-  virtual void tour();
+  virtual void lap();
   virtual void init();
   int count_neighbour(int i,int j);
   virtual ~cells_world() {}
-  virtual void affiche();
+  virtual void display();
 };
 
 #endif
