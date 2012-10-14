@@ -11,7 +11,7 @@ public :
   virtual void init();
   int count_neighbour(int i,int j);
   virtual ~cells_world() {}
-  virtual void display();
+  virtual void display_informations();
 };
 
 #endif
