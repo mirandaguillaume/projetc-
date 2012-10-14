@@ -12,12 +12,12 @@ public :
     if(occuped(y,x))
       {
 	if(carry(y,x))	
-	  cout<<"│\033[31mT\033[00m "<<getWood();
+	  cout<<"│\033[31mT\033[00m "<<getWood(y,x);
 	else
-	  cout<<"│\033[34mT\033[00m "<<getWood();
+	  cout<<"│\033[34mT\033[00m "<<getWood(y,x);
       }
     else  
-      cout<<" "<<getWood<<" ";}
+      cout<<" "<<getWood(y,x)<<" ";}
   
 };
 #endif

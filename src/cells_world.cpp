@@ -37,7 +37,7 @@ int cells_world::count_neighbour(int i,int j)
   return cpt;
 }
 
-void cells_world::display_informations()
+void cells_world::display_informations(int i,int j)
 {
   if(matrix[i][j])
     cout<<"│\033[31m(O)\033[00m";

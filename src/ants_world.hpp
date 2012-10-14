@@ -74,6 +74,14 @@ class ants_world: public actors_world{
   void move_left(actor& a){
     a.setX((a.getX()-1+length)%length);
   }
+
+  void display_informations(int i, int j){
+    if(white(i,j))
+      cout<<"│\033[30;47m "<<matrix[i,j]<<" \033[00m";
+    else
+      cout<<"│\033[37;40m "<<matrix[i,j]+1<<" \033[00m";
+
+  }
 };
 
 #endif

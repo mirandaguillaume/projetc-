@@ -69,9 +69,10 @@ public:
 	if(i==length-1)cout<<"┤"<<endl;}}
   }
 
-  void display_informations(int x,int y);
-
+  virtual void display_informations(int x,int y);
   
+  
+
   void display(){
     for(int l=0;l<length;l++)// boucle pour afficher la ligne du hau
       if(l==0)
