@@ -31,3 +31,5 @@ protected:
   actor * actors;
   int nbActors;
 };
+
+#endif
