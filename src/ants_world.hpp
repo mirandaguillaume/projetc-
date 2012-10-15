@@ -1,3 +1,4 @@
+
 #ifndef DEF_ANTS_WORLD
 #define DEF_ANTS_WORLD
 
@@ -7,9 +8,12 @@ class ants_world: public actors_world{
   ants_world(int i=0, j=0, int nb): actors_world(i, j, nb){
     for (int i=0; i<height; i++)
       for(int j=0; j<length; j++)
-	matrix[i][j]=0;
-    for (int i=0; i<nbActors; i++)
-      actors[i]=ants(height, length);
+	matrix[i][j]=-1;
+    for (int i=0; i<nbActors; i++){
+      int x=rand()%height;
+      int y=rand()%length;
+      actors[i]=ants(x, y);
+      matrix[x][y]-=1;
 }
 
   ants_world(const ants_world& m): actors_world(m){
@@ -39,10 +43,15 @@ class ants_world: public actors_world{
   }
 
   bool white(int x, int y){
-    return !matrix[x][y];
+    return matrix[x][y]<0;
+  }
+
+  int getNb(int x, int y){
+    return matrix[x][y]*(white(x,y)?-1:1)-1;
   }
 
   void move(ant& a){
+    matrix[a.getX][a.getY]-=(white(a.getX,a.getY)?-1:1);
     switch(a.getDir()){
     case 0: move_up(a); break;
     case 1: move_right(a); break;
@@ -50,7 +59,8 @@ class ants_world: public actors_world{
     case 3: move_left(a);
     }
     a.setDir(a.getDir()+(white(a.getX,a.getY)?1:-1));
-    matrix[a.getX][a.getY]+1%2;
+    matrix[a.getX][a.getY]*=(-1);
+    matrix[a.getX][a.getY]+=(white(a.getX,a.getY)?-1:1);
   }
 
   void lap(){
@@ -58,7 +68,6 @@ class ants_world: public actors_world{
       move(actors[i]);
   }
 
-  //L'axe XY suit l'axe cartésien |XY inversé dans la matrice
   void move_up(actor& a){
     a.setY((a.getY()+1)%height);
   }
