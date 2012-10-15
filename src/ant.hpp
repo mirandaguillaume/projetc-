@@ -6,6 +6,7 @@
 
 class ant: public actor{
 
+public:
   ant(int i, int j){
     x=i;
     y=j;

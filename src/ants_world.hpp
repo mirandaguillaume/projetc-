@@ -5,6 +5,7 @@
 
 class ants_world: public actors_world{
 
+public:
   ants_world(int i=0, j=0, int nb): actors_world(i, j, nb){
     for (int i=0; i<height; i++)
       for(int j=0; j<length; j++)
