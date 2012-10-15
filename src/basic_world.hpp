@@ -83,7 +83,7 @@ public:
     for(int i=0;i<height;i++)
       {
 	for(int j=0;j<length;j++){
-	  if(matrice[i][j]!=0){
+	  if(matrix[i][j]!=0){
 	    display_informations(i,j);// on affiche les informations liés à l'acteur
 	  }
 	  else 
@@ -101,7 +101,7 @@ public:
 		}
 	    }
 	}
-	for(int l=0;l<m;l++) // boucle pour afficher la ligne du bas
+	for(int l=0;l<length;l++) // boucle pour afficher la ligne du bas
 	  if(l==0)cout<<"└———";
 	  else{cout<<"┴———";}
 	cout<<"┘"<<endl;

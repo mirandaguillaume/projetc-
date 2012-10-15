@@ -1,6 +1,5 @@
 #ifndef DEF_TERMITE_WORLD
 #define DEF_TERMITE_WORLD
-
 #include "actors_world.hpp"
 
 class termites_world : public actors_world
@@ -37,7 +36,7 @@ public :
 	  {
 	    actors[nb_t-1] = new termite (xp, yp);
 	    matrix[xp][yp] = -1*(matrix[xp][yp]++);
-	      nb_t--;
+	    nb_t--;
 	  }
       }
   }
