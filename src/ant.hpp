@@ -6,9 +6,10 @@
 
 class ant: public actor{
 
+public:
   ant(int i, int j){
-    x=rand()%i;
-    y=rand()%j;
+    x=i;
+    y=j;
     dir=rand()%4;
   }
 
@@ -19,3 +20,5 @@ class ant: public actor{
 private:
   int dir;
 };
+
+#endif

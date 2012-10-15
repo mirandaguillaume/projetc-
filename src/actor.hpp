@@ -6,6 +6,7 @@
 using namespace std;
 
 class actor {
+protected:
   int x,y; // coordonnées de l'acteur
 public:
 
