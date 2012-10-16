@@ -1,18 +1,53 @@
 #include "cells_world.hpp"
 
-void cells_world::lap()
+bool cells_world::plein() 
 {
+  bool a = true;
   for (int i=0;i<height;i++)
     for (int j=0;j<length;j++)
-      if (count_neighbour(i,j)>3)
-	matrix[i][j]=true;
-      else
-	matrix[i][j]=false;
+      if (!matrix[i][j]) 
+	a=false;
+  return a;
 }
 
-void cells_world::init()
+bool cells_world::vide() 
+{
+  bool a = false;
+  for (int i=0;i<height;i++)
+    for (int j=0;j<length;j++)
+      if (!matrix[i][j]) 
+	a=true;
+  return a;
+}
+
+void cells_world::lap()
+{
+  int nbNeighbour;
+  for (int i=0;i<height;i++)
+    for (int j=0;j<length;j++)
+      {
+	nbNeighbour=count_neighbour(i,j);
+	if (matrix[i][j] && nbNeighbour!=3 && nbNeighbour!=2)
+	  {
+	    matrix[i][j]=false;
+	    if (!vitesse_rapide)
+	      display();
+	  }
+	else if (!matrix[i][j] && nbNeighbour==3)
+	  {
+	    matrix[i][j]=true;
+	    if (!vitesse_rapide)
+	      display();
+	  }
+	if (vitesse_rapide)
+	  display();
+      }
+}
+
+void cells_world::init(bool b)
 {
   int i,j;
+  vitesse_rapide=b;
   for (int n=0;n<(height*length)/3;n++)
     {
       do {
@@ -26,14 +61,14 @@ void cells_world::init()
 int cells_world::count_neighbour(int i,int j)
 {
   int cpt(0);
-  if (matrix[i-1][j-1]) cpt++;
-  if (matrix[i-1][j]) cpt++;
-  if (matrix[i-1][j+1]) cpt++;
-  if (matrix[i][j-1]) cpt++;
-  if (matrix[i][j+1]) cpt++;
-  if (matrix[i+1][j-1]) cpt++;
-  if (matrix[i+1][j]) cpt++;
-  if (matrix[i+1][j+1]) cpt++;
+  if (matrix[(i-1+height)%height][(j-1+length)%length]) cpt++;
+  if (matrix[(i-1+height)%height][j]) cpt++;
+  if (matrix[(i-1+height)%height][(j+1)%length]) cpt++;
+  if (matrix[i][(j-1+length)%length]) cpt++;
+  if (matrix[i][(j+1)%length]) cpt++;
+  if (matrix[(i+1)%height][(j-1+length)%length]) cpt++;
+  if (matrix[(i+1)%height][j]) cpt++;
+  if (matrix[(i+1)%height][(j+1)%length]) cpt++;
   return cpt;
 }
 

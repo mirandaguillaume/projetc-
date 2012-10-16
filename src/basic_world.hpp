@@ -57,22 +57,13 @@ public:
     return *this;
   }
 
-  virtual void tour() =0;
-  virtual void init() =0;
+  virtual void lap() =0;
+  virtual void init(bool) =0;
 
-
-
-  void display__separotor_ligne(){
-    for(int i=0;i<length;i++){
-      if(i==0)cout<<"├—";
-      else{cout<<"┼—";
-	if(i==length-1)cout<<"┤"<<endl;}}
-  }
-
-  virtual void display_informations(int x,int y);
+  virtual void display_informations(int x,int y) = 0;
   
   
-
+  
   void display(){
     for(int l=0;l<length;l++)// boucle pour afficher la ligne du hau
       if(l==0)
@@ -101,12 +92,14 @@ public:
 		}
 	    }
 	}
-	for(int l=0;l<length;l++) // boucle pour afficher la ligne du bas
-	  if(l==0)cout<<"└———";
-	  else{cout<<"┴———";}
-	cout<<"┘"<<endl;
       }
+    for(int l=0;l<length;l++) // boucle pour afficher la ligne du bas
+      if(l==0)cout<<"└———";
+      else{cout<<"┴———";}
+    cout<<"┘"<<endl;
+    sleep(2);
   }
+
   virtual ~basic_world() 
   {
     if (matrix)
@@ -121,6 +114,7 @@ public:
 protected:
   T ** matrix;
   int height,length;
+  bool vitesse_rapide;
 };
 
 #endif
