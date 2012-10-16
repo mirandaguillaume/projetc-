@@ -4,21 +4,25 @@
 #include <ctime>
 #include <cstdlib>
 
+enum direction {nord,est,sud,ouest};
+
 class ant: public actor{
 
 public:
-  ant(int i, int j){
+  ant(int i, int j) {
     x=i;
     y=j;
-    dir=rand()%4;
+    orientation=(direction)rand()%4;
   }
 
-  int getDir()const{return dir;}
+  direction getDir() const {return orientation;}
 
-  int setDir(int a){dir=a;}
+  void setDir(direction d){orientation=d;}
+
+  virtual actor* clonage() {return new ant(*this);}
 
 private:
-  int dir;
+  direction orientation;
 };
 
 #endif
