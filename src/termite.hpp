@@ -13,5 +13,7 @@ private :
 public :
   termite(int i = 0, int j = 0, bool c = false) : actor (i,j), carry(c) {}
   virtual actor* clonage() {return new termite(*this);}
+  bool getCarry()const{return carry;}
+  void setCarry(bool x){carry=x;}
 };
 #endif

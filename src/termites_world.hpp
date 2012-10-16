@@ -1,6 +1,7 @@
 #ifndef DEF_TERMITE_WORLD
 #define DEF_TERMITE_WORLD
 #include "actors_world.hpp"
+#include "termite.hpp"
 
 class termites_world : public actors_world
 {
@@ -22,7 +23,7 @@ public :
 	      }
 	    else 
 	      {
-		matrix[xp][xy] = matrix[xp][yp] + aux;
+		matrix[xp][yp] = matrix[xp][yp] + aux;
 		nb_w = nb_w - aux;
 	      }
 	  }
@@ -34,7 +35,7 @@ public :
 	yp = rand()%y;
 	if(matrix[xp][yp]>=0)
 	  {
-	    actors[nb_t-1] = new termite (xp, yp);
+	    actors[nb_t-1] = new termite(xp,yp);
 	    matrix[xp][yp] = -1*(matrix[xp][yp]++);
 	    nb_t--;
 	  }
@@ -48,11 +49,11 @@ public :
   bool carry(int x, int y = -1)
   {
     if (y == -1)
-      return actors[x]->carry;
-    for (int i = 0; i < nb_actors; i++)
+      return actors[x]->getCarry();
+    for (int i = 0; i < nbActors; i++)
       {
-	if (actors[i]->x == x && actors[i]->y == y)
-	  return actors[i]->carry;
+	if (actors[i]->getX() == x && actors[i]->getY() == y)
+	  return actors[i]->getCarry();
       }
     return false;
   }
@@ -74,8 +75,8 @@ public :
   bool movable(int x, int y)
   {
     int xp, yp;
-    for(int i = x-1; i =< x+1; i++)
-      for(int j = y-1; i =< j+1; i++)
+    for(int i = x-1; i <= x+1; i++)
+      for(int j = y-1; i <= j+1; i++)
 	{
 	  if( i != x || j != y )
 	    {
@@ -90,11 +91,11 @@ public :
   {
     matrix[x][y] = -1*(matrix[x][y]+1);
     matrix[dx][dy] = -1*(matrix[dx][dy]+1);
-    if(matrix[dx][dy]!==-10)
-      if(actors[index]->carry)
+    if(matrix[dx][dy]==-10)
+      if(actors[index]->getCarry())
 	{
 	  matrix[dx][dy]--;
-	  actors[index]->carry = 0;
+	  actors[index]->setCarry(0);
 	}
   }
 
@@ -109,7 +110,7 @@ public :
 
   void move(int index)
   {
-    int x = actors[index]->x, y = actors[index]->y, dx, dy;
+    int x = actors[index]->getX(), y = actors[index]->getX(), dx, dy;
     bool moved = false;
     if (movable(x,y)){
       while(!moved){
@@ -154,8 +155,8 @@ public :
   void lap(int nb)
   {
     for(int i = 0; i < nb; i++)
-      for(int j = 0; j < nbActor; j++)
-	move[i];
+      for(int j = 0; j < nbActors; j++)
+	move(i);
   }
   void display_informations(int y,int x){
     if(occuped(y,x))
