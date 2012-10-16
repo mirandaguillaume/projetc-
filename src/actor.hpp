@@ -18,6 +18,9 @@ public:
 
   actor(int i=0, int j=0) : x(i), y(j) {}
 
+  virtual actor* clonage() =0;
+  virtual ~actor() =0;
+
 };
 
 #endif

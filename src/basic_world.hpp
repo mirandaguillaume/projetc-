@@ -98,6 +98,7 @@ public:
       else{cout<<"┴———";}
     cout<<"┘"<<endl;
     sleep(2);
+    system("clear");
   }
 
   virtual ~basic_world() 
