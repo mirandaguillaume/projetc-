@@ -13,13 +13,10 @@ public:
   int getX()const{return x;}
   int getY()const{return y;}
 
-  int setX(int a){x=a;}
-  int setY(int b){y=b;}
+  void setX(int a){x=a;}
+  void setY(int b){y=b;}
 
   actor(int i=0, int j=0) : x(i), y(j) {}
-
-  virtual actor* clonage() =0;
-  virtual ~actor() =0;
 
 };
 

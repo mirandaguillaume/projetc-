@@ -65,7 +65,7 @@ public:
   
   
   void display(){
-    for(int l=0;l<length;l++)// boucle pour afficher la ligne du hau
+    for(int l=0;l<length;l++)// boucle pour afficher la ligne du haut
       if(l==0)
 	cout<<"┌———";
       else

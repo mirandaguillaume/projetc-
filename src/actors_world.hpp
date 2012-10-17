@@ -17,7 +17,7 @@ public:
     for (int i=0;i<nbActors;i++) list[i]=a.list[i];
   } 
 
-  actors_world& operator=(const actors_world& a)
+  actors_world & operator=(const actors_world& a)
   {
     if (this!=&a)
       {
