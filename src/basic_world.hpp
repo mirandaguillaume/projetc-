@@ -13,16 +13,16 @@ class basic_world
 {
 public:
 
-  basic_world (int i,int j): height(i), length(j)
+  basic_world (int i,int j,bool speed): height(i), length(j), speed(speed)
   {
     matrix = new T* [height];
     for (int n=0;n<height;n++)
       matrix[n]= new T [length];
   } 
 
-  basic_world() : matrix(NULL), length(0), height(0) {}
+  basic_world() : matrix(NULL), length(0), height(0), speed(false) {}
 
-  basic_world(const basic_world& m) : height(m.height), length(m.length)
+  basic_world(const basic_world& m) : height(m.height), length(m.length), speed(m.speed)
   {
     cout<<"ok"<<endl;
     matrix = new T* [height];
@@ -44,6 +44,7 @@ public:
 	      if (matrix[i]) delete [] matrix[i];
 	    delete [] matrix;
 	  }
+	speed=m.speed;
 	height=m.height;
 	length=m.length;
 	matrix = new T* [height];
@@ -58,7 +59,7 @@ public:
   }
 
   virtual void lap() =0;
-  virtual void init(bool) =0;
+  virtual void init() =0;
 
   virtual void display_informations(int x,int y) = 0;
   
@@ -115,7 +116,7 @@ public:
 protected:
   T ** matrix;
   int height,length;
-  bool vitesse_rapide;
+  bool speed;
 };
 
 #endif

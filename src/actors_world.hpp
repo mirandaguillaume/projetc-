@@ -4,14 +4,14 @@
 #include "basic_world.hpp"
 #include "actor.hpp"
 
-template <typename T>
-class actors_world : public basic_world<int>
+template <typename T,typename D>
+class actors_world : public basic_world<D>
 {
 public:
-  actors_world(int i=0,int j=0, int nb=5) : basic_world<int>(i,j),nbActors(nb)
+  actors_world(int i=0,int j=0, int nb=5,bool speed=false) : basic_world<D>(i,j,speed),nbActors(nb)
   {list = new T [nb];}
 
-  actors_world(const actors_world& a) : basic_world<int>(a),nbActors(a.nbActors)
+  actors_world(const actors_world& a) : basic_world<D>(a),nbActors(a.nbActors)
   {
     list=new T [nbActors];
     for (int i=0;i<nbActors;i++) list[i]=a.list[i];
@@ -31,6 +31,8 @@ public:
   } 
 
   ~actors_world() { delete [] list;}
+
+  virtual void init() =0;
 
 protected:
   T * list;

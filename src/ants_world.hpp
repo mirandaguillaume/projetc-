@@ -4,11 +4,11 @@
 #include "actors_world.hpp"
 #include "ant.hpp"
 
-class ants_world: public actors_world
+class ants_world: public actors_world<ant,int>
 {
 
 public:
-  ants_world(int i=0,int j=0, int nb=3);
+  ants_world(int i=0,int j=0, int nb=3,bool speed=false);
   bool white(int x, int y) const;
   int getNb(int x, int y) const;
   void move(int i);

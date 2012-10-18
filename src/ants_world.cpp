@@ -1,19 +1,29 @@
 #include "ants_world.hpp"
+#include <cmath>
 
-ants_world::ants_world(int i,int j, int nb): actors_world(i, j,nb)
+ants_world::ants_world(int i,int j, int nb, bool speed): actors_world<ant,int>(i, j,nb,speed)
 {init();}
 
 void ants_world::init()
 {
+  ant a;
+  int x,y;
   for (int i=0; i<height; i++)
     for(int j=0; j<length; j++)
-      matrix[i][j]=-1;
+      switch(rand()%2)
+	{
+	case 0:	matrix[i][j]=-1;break;
+	case 1: matrix[i][j]=1;break;
+	}
   for (int i=0; i<nbActors; i++)
     {
-      int x=rand()%height;
-      int y=rand()%length;
-      list[i]= new ant(x,y);
-      matrix[x][y]-=1;
+      do {
+      x=rand()%height;
+      y=rand()%length;
+      } while (abs(matrix[x][y])==2);
+      a.setCoord(x,y);
+      list[i]=a;
+      matrix[x][y]+=(white(x,y)?-1:1);
     }
 }
 
@@ -26,43 +36,35 @@ int ants_world::getNb(int x, int y) const {
 }
 
 void ants_world::move(int i){
-  bool time;
-  int i(0),j(0);
-  this->action(i,time);
-  matrix[list[i]->getX()][list[i]->getY()]*=-1;
-  matrix[list[i]->getX()][list[i]->getY()];
-  switch(list[i]->getDir()){
-  case north: j=(j+1)%length; break;
-  case west: ; break;
-  case south: ; break;
-  case east: ;
-  }
-  /*
-  list[i]->setDir(white);
-  matrix[list[i]->getX()][list[i]->getY()]*=(-1);
-  matrix[list[i]->getX()][list[i]->getY()]+=(white(list[i]->getX(),list[i]->getY())?-1:1);*/
-  this->action(i,time);
-}
-
-void ants_world::move_up(int i){
-  list[i]->setY((list[i]->getY()+1)%height);
-}
-
-void ants_world::move_down(int i){
-  list[i]->setY((list[i]->getY()-1+height)%height);
-}
-
-void ants_world::move_right(int i){
-  list[i]->setX((list[i]->getX()+1)%length);
-}
-
-void ants_world::move_left(int i){
-  list[i]->setX((list[i]->getX()-1+length)%length);
+  int x(list[i].getX()),y(list[i].getY());
+  switch(list[i].getDir())
+    {
+    case north: y=(y+1)%length; break;
+    case east: x=(x+1)%height; break;
+    case south: y=(y-1+length)%length; break;
+    case west: x=(x-1+height)%height;break;
+    }
+  if (abs(matrix[x][y])!=2)
+    {
+      matrix[list[i].getX()][list[i].getY()]-=(white(list[i].getX(),list[i].getY())?-1:1);
+      matrix[x][y]+=(white(x,y)?-1:1);
+      list[i].setCoord(x,y);
+    }
+  else 
+    {
+      x=list[i].getX();
+      y=list[i].getY();
+    }
+  matrix[x][y]*=(-1);
+  list[i].setDir(white(x,y));
 }
 
 void ants_world::lap(){
   for (int i=0; i<nbActors; i++)
-    move(list[i]);
+    {
+      move(i);
+      display();
+    }
 }
 
 
