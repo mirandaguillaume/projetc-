@@ -31,6 +31,9 @@ public:
   } 
 
   ~actors_world() { delete [] list;}
+  void display(){
+    basic_world<D>::display();
+    cout<<endl<<"Il y a "<<nbActors<<" acteurs."<<endl;}
 
   virtual void lap() =0;
   virtual void init() =0;

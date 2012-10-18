@@ -8,10 +8,11 @@ using namespace std;
 int main()
 {
   srand(time(NULL));
-  int i;
-  termites_world b(4,4,5,true);
+  termites_world b(4,4,3,true);
   b.display();
-  for (i=0;i<20;i++)
+  for (int i=0;i<20;i++){
+    cout<<"tour"<<i<<endl;
     b.lap();
+  }
   return 0;
 }
