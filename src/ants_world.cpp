@@ -1,7 +1,7 @@
 #include "ants_world.hpp"
 #include <cmath>
 
-ants_world::ants_world(int i,int j, int nb, bool speed): actors_world<ant,int>(i, j,nb,speed)
+ants_world::ants_world(int i,int j, int nb, int speed): actors_world<ant,int>(i, j,nb,speed)
 {init();}
 
 void ants_world::init()

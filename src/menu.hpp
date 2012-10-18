@@ -1,14 +1,14 @@
+#ifndef MENU
+#define MENU
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "basic_world.hpp"
 #include "ants_world.hpp"
 #include "cells_world.hpp"
 #include "termites_world.hpp"
+
 using namespace std;
 
 void menu(){
-int choix(-1);
+  int choix(-1);
   do{
     choix=-1;
     int largeur(0),longueur(0),vitesse(0),nbTours(0),nbActeurs(0),nbMorceaux(-1);
@@ -39,7 +39,7 @@ int choix(-1);
 	<<endl
 	<<"Entrez votre choix : ";cin>>choix;
     cout<<endl;
-    system("clear");
+
 
     cout<<endl
 	<<"                   ┌———————————————————————————————————┐"<<endl;
@@ -78,18 +78,13 @@ int choix(-1);
       do {
 	cout<<"Saisissez le nombre de Termites : ";cin>>nbActeurs;
       }while(nbActeurs<=0);
-      cout<<endl<<endl;
- 
-      do{
-	cout<<"Saisissez le nombre de morceaux de bois ! : ";cin>>nbMorceaux;
-      }while(nbMorceaux<0);
     }
     else if(choix==2)
       do {
 	cout<<"Saisissez le nombre de Fourmis : ";cin>>nbActeurs;
       }while(nbActeurs<=0);
     if(choix==1){
-      termites_world b(longueur,largeur,nbActeurs,nbMorceaux,vitesse);
+      termites_world b(longueur,largeur,nbActeurs,vitesse);
       for (int i=0;i<nbTours;i++){
 	cout<<"Tour n°"<<i+1<<endl;
 	b.lap();}
@@ -109,9 +104,4 @@ int choix(-1);
   }
   while(choix!=0);
 }
-int main()
-{
-  srand(time(NULL));
-  menu();
-  return 0;
-}
+#endif

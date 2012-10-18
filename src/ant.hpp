@@ -5,14 +5,12 @@
 #include <ctime>
 #include <cstdlib>
 
-enum direction {north,east,south,west};
+enum direction {north=0,east,south,west};
 
 class ant: public actor{
 
 public:
-  ant(int i=0, int j=0) {
-    x=i;
-    y=j;
+  ant(int i=0, int j=0):actor(i,j) {
     orientation=(direction)(rand()%4);
   }
 

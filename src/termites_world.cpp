@@ -4,7 +4,10 @@ void termites_world::init()
 {
   int x, y, aux;
   termite t;
-  for (int i=0;i<(height*length);i++) // placement des bouts des bois
+  for(int i=0;i<length;i++)
+    for(int j=0;j<height;j++)
+      matrix[i][j]=0;
+  for (int i=0;i<(nbWood);i++) // placement des bouts des bois
     {
       do 
 	{
@@ -26,7 +29,7 @@ void termites_world::init()
     }
 }
 
-termites_world::termites_world(int x, int y, int nb_t,bool speed) : actors_world<termite,int>(x,y,nb_t,speed) 
+termites_world::termites_world(int x, int y, int nb_t,int speed,int nbWood) : actors_world<termite,int>(x,y,nb_t,speed) 
 {init();}
 
 bool termites_world::carry(int x, int y = -1)

@@ -30,17 +30,13 @@ void cells_world::lap()
 	if (matrix[i][j] && nbNeighbour!=3 && nbNeighbour!=2)
 	  {
 	    matrix[i][j]=false;
-	    if (!speed)
 	      display();
 	  }
 	else if (!matrix[i][j] && nbNeighbour==3)
 	  {
 	    matrix[i][j]=true;
-	    if (!speed)
 	      display();
 	  }
-	if (speed)
-	  display();
       }
 }
 
