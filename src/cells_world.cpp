@@ -1,25 +1,5 @@
 #include "cells_world.hpp"
 
-bool cells_world::plein() 
-{
-  bool a = true;
-  for (int i=0;i<height;i++)
-    for (int j=0;j<length;j++)
-      if (!matrix[i][j]) 
-	a=false;
-  return a;
-}
-
-bool cells_world::vide() 
-{
-  bool a = false;
-  for (int i=0;i<height;i++)
-    for (int j=0;j<length;j++)
-      if (!matrix[i][j]) 
-	a=true;
-  return a;
-}
-
 void cells_world::lap()
 {
   int nbNeighbour;
@@ -28,21 +8,13 @@ void cells_world::lap()
       {
 	nbNeighbour=count_neighbour(i,j);
 	if (matrix[i][j] && nbNeighbour!=3 && nbNeighbour!=2)
-	  {
-	    matrix[i][j]=false;
-	    if (!speed)
-	      display();
-	  }
+	  matrix[i][j]=false;
 	else if (!matrix[i][j] && nbNeighbour==3)
-	  {
-	    matrix[i][j]=true;
-	    if (!speed)
-	      display();
-	  }
-	if (speed)
-	  display();
+	  matrix[i][j]=true;
       }
+  display();
 }
+
 
 void cells_world::init()
 {

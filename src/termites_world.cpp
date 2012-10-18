@@ -3,7 +3,7 @@
 void termites_world::init()
 {
   int x, y, aux;
-  for (int i=0;i<(height*length);i++) // placement des bouts des bois
+  for (int i=0;i<nbWood;i++) // placement des bouts des bois
     {
       do 
 	{
@@ -17,14 +17,14 @@ void termites_world::init()
       do {
 	x = rand()%height;
 	y = rand()%length;
-      } while (matrix[x][y]<=0);
+      } while (matrix[x][y]<0);
       list[i].setCoord(x,y);
       matrix[x][y]*=(-1);
       matrix[x][y]-=1;
     }
 }
 
-termites_world::termites_world(int x, int y, int nb_t,bool speed) : actors_world<termite,int>(x,y,nb_t,speed) 
+termites_world::termites_world(int x, int y, int nb_t,int speed,int nbWood) : actors_world<termite,int>(x,y,nb_t,speed), nbWood(nbWood) 
 {init();}
 
 bool termites_world::carry(int x, int y = -1)
@@ -83,7 +83,6 @@ void termites_world::do_move(int dx, int dy, int index)
 bool termites_world::verif_move(int dx, int dy, int index)
 {
   if(!occuped(dx, dy)){
-    cout<<"!occuped"<<endl;
     do_move(dx,dy,index);
     return true;}
   return false;
@@ -110,9 +109,7 @@ void termites_world::move(int i)
       case 7: dy = (y + 1)%length;
       case 6: dx = (x - 1 + height)%height; break;
       }
-      cout<<i<<": x="<<x<<", y="<<y<<", dx="<<dx<<", dy="<<dy<<endl;
       moved = verif_move(dx,dy,i);
-      //sleep(2);
     }
   }
 }
@@ -121,11 +118,8 @@ void termites_world::lap()
 {
   for(int p = 0; p < nbActors; p++)
     {
-      cout<<"beg"<<endl;
       move(p);
-      cout<<"med"<<endl;
       display();
-      cout<<"end"<<endl;
     }
 }
 

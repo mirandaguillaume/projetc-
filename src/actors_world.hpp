@@ -8,7 +8,7 @@ template <typename T,typename D>
 class actors_world : public basic_world<D>
 {
 public:
-  actors_world(int i=0,int j=0, int nb=5,bool speed=false) : basic_world<D>(i,j,speed),nbActors(nb)
+  actors_world(int i=0,int j=0, int nb=5,int speed=1) : basic_world<D>(i,j,speed),nbActors(nb)
   {list = new T [nb];}
 
   actors_world(const actors_world& a) : basic_world<D>(a),nbActors(a.nbActors)

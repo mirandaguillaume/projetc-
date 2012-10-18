@@ -1,11 +1,12 @@
 #include "ants_world.hpp"
 #include <cmath>
 
-ants_world::ants_world(int i,int j, int nb, bool speed): actors_world<ant,int>(i, j,nb,speed)
+ants_world::ants_world(int i,int j, int nb, int speed): actors_world<ant,int>(i, j,nb,speed)
 {init();}
 
 void ants_world::init()
 {
+  ant a;
   int x,y;
   for (int i=0; i<height; i++)
     for(int j=0; j<length; j++)
@@ -20,7 +21,8 @@ void ants_world::init()
       x=rand()%height;
       y=rand()%length;
       } while (abs(matrix[x][y])==2);
-      list[i].setCoord(x,y);
+      a.setCoord(x,y);
+      list[i]=a;
       matrix[x][y]+=(white(x,y)?-1:1);
     }
 }

@@ -13,16 +13,16 @@ class basic_world
 {
 public:
 
-  basic_world(int i,int j,bool speed): height(i), length(j), speed(speed)
+  basic_world(int i,int j,int speed): height(i), length(j), _speed(speed)
   {
     matrix = new T* [height];
     for (int n=0;n<height;n++)
       matrix[n]= new T [length];
   } 
 
-  basic_world() : matrix(NULL), length(0), height(0), speed(false) {}
+  basic_world() : matrix(NULL), length(0), height(0), _speed(1) {}
 
-  basic_world(const basic_world& m) : height(m.height), length(m.length), speed(m.speed)
+  basic_world(const basic_world& m) : height(m.height), length(m.length), _speed(m._speed)
   {
     cout<<"ok"<<endl;
     matrix = new T* [height];
@@ -38,13 +38,13 @@ public:
   virtual void lap() =0;
   virtual void init() =0;
   virtual void display_informations(int x,int y) = 0;
-  virtual void display();
+  void display();
   virtual ~basic_world();
  
 protected:
   T ** matrix;
   int height,length;
-  bool speed;
+  int _speed;
 };
 
 template <typename T>
@@ -58,7 +58,7 @@ inline basic_world<T>&  basic_world<T>::operator = (const basic_world<T>& m)
 	    if (matrix[i]) delete [] matrix[i];
 	  delete [] matrix;
 	}
-      speed=m.speed;
+      _speed=m._speed;
       height=m.height;
       length=m.length;
       matrix = new T* [height];
@@ -106,7 +106,7 @@ inline void basic_world<T>::display(){
     if(l==0)cout<<"└———";
     else{cout<<"┴———";}
   cout<<"┘"<<endl;
-  sleep(2);
+  sleep(_speed);
   system("clear");
 }
 

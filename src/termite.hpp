@@ -1,7 +1,10 @@
 #ifndef DEF_TERMITE
 #define DEF_TERMITE
 
+#include <iostream>
 #include "actor.hpp"
+
+using namespace std;
 
 class termite : public actor {
 
