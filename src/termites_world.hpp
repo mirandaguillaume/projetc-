@@ -11,7 +11,7 @@ public :
   bool carry(int x,int y);
   bool occuped(int x, int y) const {return matrix[x][y]<0;}
   int getWood(int x, int y);
-  //void mod(int & x, int & y);
+ 
   bool movable(int x, int y);    
   void do_move(int dx, int dy, int index);
   bool verif_move(int dx, int dy, int index);

@@ -10,7 +10,7 @@ int main()
   srand(time(NULL));
   termites_world b(4,4,3,true);
   b.display();
-  for (int i=0;i<20;i++){
+  for (int i=0;i<7;i++){
     cout<<"tour"<<i<<endl;
     b.lap();
   }

@@ -4,13 +4,13 @@ void termites_world::init()
 {
   int x, y, aux;
   termite t;
-  for (int i=0;i<(height*length);i++)
+  for (int i=0;i<(height*length);i++) // placement des bouts des bois
     {
       do 
 	{
 	  x = rand()%height;
 	  y = rand()%length;
-	} while (matrix[x][y]==9);
+	} while (matrix[x][y]==9); // tas de bois de taille  maximum 9
       matrix[x][y]++;
     }
   for (int i=0;i<nbActors;i++)
@@ -47,29 +47,19 @@ int termites_world::getWood(int x, int y)
   else return -1*(matrix[x][y]+1);
 }
 
-/*
-  void termites_world::mod(int & x, int & y)
-  {
-  if(x<0) x = height--;
-  else if(x==height) x = 0;
-  if(y<0) y = length--;
-  else if(y==length) y = 0;
-  }
-*/
+
 
 bool termites_world::movable(int x, int y)
 {
   bool ok(false);
-  for(int i = x-1; i <= x+1 && ok; i++)
-    for(int j = y-1; i <= j+1 && ok; i++)
+  for(int i = x-1; i <= x+1 && !ok; i++)
+    for(int j = y-1; j <= y+1 && !ok; j++)
       {
-	if( i != x && j != y )
+	if( i != x || j != y )
 	  {
-	    if (i<0) i+=height;	
-	    if (j<0) j+=length;
-	    i%=height;
-	    j%=length;
-	    if(occuped(i,j))ok= true;
+	    i=(i+height)%height;
+	    j=(j+length)%length;
+	    if(!occuped(i,j))ok= true;
 	  }
       }
   return ok;
@@ -105,9 +95,10 @@ void termites_world::move(int i)
 {
   int x = list[i].getX(), y = list[i].getY(), dx(x), dy(y);
   bool moved = false;
-  int aux=rand()%8;
+  int aux;
   if (movable(x,y)){
     while(!moved){
+      aux=rand()%8;
       switch(aux){
       case 1: dx = (x + 1)%height;
       case 0: dy = (y + 1)%length; break;
@@ -121,18 +112,19 @@ void termites_world::move(int i)
       case 7: dy = (y + 1)%length;
       case 6: dx = (x - 1 + height)%height; break;
       }
-      cout<<"x="<<x<<", y="<<y<<", dx="<<dx<<", dy="<<dy<<endl;
+      cout<<i<<": x="<<x<<", y="<<y<<", dx="<<dx<<", dy="<<dy<<endl;
       moved = verif_move(dx,dy,i);
+      //sleep(2);
     }
   }
 }
 
 void termites_world::lap()
 {
-  for(int j = 0; j < nbActors; j++)
+  for(int p = 0; p < nbActors; p++)
     {
       cout<<"beg"<<endl;
-      move(j);
+      move(p);
       cout<<"med"<<endl;
       display();
       cout<<"end"<<endl;
