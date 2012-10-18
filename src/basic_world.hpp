@@ -38,7 +38,7 @@ public:
   virtual void lap() =0;
   virtual void init() =0;
   virtual void display_informations(int x,int y) = 0;
-  void display();
+  virtual void display();
   virtual ~basic_world();
  
 protected:

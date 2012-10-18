@@ -6,7 +6,6 @@ ants_world::ants_world(int i,int j, int nb, bool speed): actors_world<ant,int>(i
 
 void ants_world::init()
 {
-  ant a;
   int x,y;
   for (int i=0; i<height; i++)
     for(int j=0; j<length; j++)
@@ -21,8 +20,7 @@ void ants_world::init()
       x=rand()%height;
       y=rand()%length;
       } while (abs(matrix[x][y])==2);
-      a.setCoord(x,y);
-      list[i]=a;
+      list[i].setCoord(x,y);
       matrix[x][y]+=(white(x,y)?-1:1);
     }
 }
