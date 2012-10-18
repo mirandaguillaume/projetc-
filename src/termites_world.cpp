@@ -4,6 +4,9 @@ void termites_world::init()
 {
   int x, y, aux;
   termite t;
+  for (int i=0;i<height;i++)
+    for (int j=0;i<length;i++)
+      matrix[i][j]=0;
   for (int i=0;i<(2*height*length);i++)
     {
       do 
@@ -59,8 +62,9 @@ int termites_world::getWood(int x, int y)
 
 bool termites_world::movable(int x, int y)
 {
-  for(int i = x-1; i <= x+1; i++)
-    for(int j = y-1; i <= j+1; i++)
+  bool ok(true);
+  for(int i = x-1; i <= x+1 && ok; i++)
+    for(int j = y-1; i <= j+1 && ok; i++)
       {
 	if( i != x && j != y )
 	  {
@@ -68,10 +72,10 @@ bool termites_world::movable(int x, int y)
 	    if (j<0) j+=length;
 	    i%=height;
 	    j%=length;
-	    if(!occuped(i,j))return true;
+	    if(occuped(i,j))ok= false;
 	  }
       }
-  return false;
+  return ok;
 }
 	
 void termites_world::do_move(int dx, int dy, int index)
@@ -138,8 +142,8 @@ void termites_world::display_informations(int y,int x)
       if(carry(y,x))	
 	cout<<"│\033[31mT\033[00m "<<getWood(y,x);
       else
-	cout<<"│\033[34mT\033[00m "<<getWood(y,x);
+	cout<<"│\033[32mT\033[00m "<<getWood(y,x);
     }
   else  
-    cout<<" "<<getWood(y,x)<<" ";
+    cout<<"│ "<<getWood(y,x)<<" ";
 }

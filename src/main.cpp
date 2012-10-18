@@ -11,7 +11,7 @@ int main()
   int i;
   termites_world b(4,4,5,true);
   b.display();
-  for (i=0;i<4;i++)
+  for (i=0;i<20;i++)
     b.lap();
   return 0;
 }

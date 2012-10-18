@@ -32,7 +32,9 @@ public:
 
   ~actors_world() { delete [] list;}
 
+  virtual void lap() =0;
   virtual void init() =0;
+  virtual void display_informations(int x,int y) =0;
 
 protected:
   T * list;
