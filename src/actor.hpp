@@ -1,9 +1,5 @@
-#ifndef DEF_ACTOR
-#define DEF_ACTOR
-
-#include <iostream>
-
-using namespace std;
+#ifndef DEF_PTR_ACTOR
+#define DEF_PTR_ACTOR
 
 class actor {
 protected:
