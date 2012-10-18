@@ -10,7 +10,7 @@ void termites_world::init()
 	{
 	  x = rand()%height;
 	  y = rand()%length;
-	} while (matrix[x][y]==10);
+	} while (matrix[x][y]==9);
       matrix[x][y]++;
     }
   for (int i=0;i<nbActors;i++)
@@ -22,6 +22,7 @@ void termites_world::init()
       t.setCoord(x,y);
       list[i] = t;
       matrix[x][y]*=(-1);
+      matrix[x][y]-=1;
     }
 }
 
@@ -42,7 +43,7 @@ bool termites_world::carry(int x, int y = -1)
 
 int termites_world::getWood(int x, int y)
 {
-  if(matrix[x][y]>=0) return matrix[x][y];
+  if(matrix[x][y]>=0) return matrix[x][y]-1;
   else return -1*(matrix[x][y]+1);
 }
 
@@ -58,80 +59,87 @@ int termites_world::getWood(int x, int y)
 
 bool termites_world::movable(int x, int y)
 {
-
   for(int i = x-1; i <= x+1; i++)
     for(int j = y-1; i <= j+1; i++)
       {
 	if( i != x && j != y )
 	  {
 	    if (i<0) i+=height;	
-		if (j<0) j+=length;
-		i%=height;
-		j%=length;
-		if(!occuped(i,j))return true;
+	    if (j<0) j+=length;
+	    i%=height;
+	    j%=length;
+	    if(!occuped(i,j))return true;
 	  }
       }
   return false;
 }
-	void termites_world::do_move(int & x, int & y, int & dx, int & dy, int & index)
-	{
-	  matrix[x][y] = -1*(matrix[x][y]+1);
-	  matrix[dx][dy] = -1*(matrix[dx][dy]+1);
-	  if(matrix[dx][dy]!=-10)
-	    if(list[index].getCarry())
-	      {
-		matrix[dx][dy]--;
-		list[index].setCarry(false);
-	      }
-	}
+	
+void termites_world::do_move(int dx, int dy, int index)
+{
+  matrix[list[index].getX()][list[index].getY()]=-1*(matrix[list[index].getX()][list[index].getY()]+1);
+  matrix[dx][dy]=-1*(matrix[dx][dy]+1);
+  if (list[index].getCarry() && matrix[dx][dy]!=-10)
+    {    
+      matrix[dx][dy]--;
+      list[index].setCarry(false);
+    }
+  else if (!list[index].getCarry())
+    {
+      matrix[dx][dy]++;
+      list[index].setCarry(true);
+    }
+}
 
-	bool termites_world::verif_move(int & x, int & y, int & dx, int & dy, int & index)
-	{
-	  if(!occuped(dx, dy)){
-	    do_move(x,y,dx,dy,index);
-	    return true;}
-	  return false;
-	}
+bool termites_world::verif_move(int dx, int dy, int index)
+{
+  if(!occuped(dx, dy)){
+    do_move(dx,dy,index);
+    return true;}
+  return false;
+}
 
-	void termites_world::move(int i)
-	{
-	  int x = list[i].getX(), y = list[i].getY(), dx(x), dy(y);
-	  bool moved = false;
-	  if (movable(x,y)){
-	    while(!moved){
-	      switch(rand()%8){
-	      case 1: dx = (x + 1)%height;
-	      case 0: dy = (y + 1)%length; break;
+void termites_world::move(int i)
+{
+  int x = list[i].getX(), y = list[i].getY(), dx(x), dy(y);
+  bool moved = false;
+  if (movable(x,y)){
+    while(!moved){
+      switch(rand()%8){
+      case 1: dx = (x + 1)%height;
+      case 0: dy = (y + 1)%length; break;
  
-	      case 3: dy = (y - 1 + length)%length;
-	      case 2: dx = (x + 1)%height; break;
+      case 3: dy = (y - 1 + length)%length;
+      case 2: dx = (x + 1)%height; break;
   
-	      case 5: dx = (x - 1 + height)%height;  
-	      case 4: dy = (y - 1 + length)%length;break;
+      case 5: dx = (x - 1 + height)%height;  
+      case 4: dy = (y - 1 + length)%length;break;
    
-	      case 7: dy = (y + 1)%length;
-	      case 6: dx = (x - 1 + height)%height; break;
-	      }
-	      moved = verif_move(x,y,dx,dy,i);
-	    }
-	  }
-	}
+      case 7: dy = (y + 1)%length;
+      case 6: dx = (x - 1 + height)%height; break;
+      }
+      moved = verif_move(dx,dy,i);
+    }
+  }
+}
 
-	void termites_world::lap()
-	{
-	  for(int j = 0; j < nbActors; j++)
-	    move(j);
-	}
+void termites_world::lap()
+{
+  for(int j = 0; j < nbActors; j++)
+    {
+      move(j);
+      display();
+    }
+}
 
-	void termites_world::display_informations(int y,int x)
-	{
-	  if(occuped(y,x))
-	    {
-	      if(carry(y,x))	
-		cout<<"│\033[31mT\033[00m "<<getWood(y,x);
-	      else
-		cout<<"│\033[34mT\033[00m "<<getWood(y,x);
-	    }
-	  else  
-	    cout<<" "<<getWood(y,x)<<" ";
-	}
+void termites_world::display_informations(int y,int x)
+{
+  if(occuped(y,x))
+    {
+      if(carry(y,x))	
+	cout<<"│\033[31mT\033[00m "<<getWood(y,x);
+      else
+	cout<<"│\033[34mT\033[00m "<<getWood(y,x);
+    }
+  else  
+    cout<<" "<<getWood(y,x)<<" ";
+}

@@ -13,8 +13,8 @@ public :
   int getWood(int x, int y);
   //void mod(int & x, int & y);
   bool movable(int x, int y);    
-  void do_move(int & x, int & y, int & dx, int & dy, int & index);
-  bool verif_move(int & x, int & y, int & dx, int & dy, int & index);
+  void do_move(int dx, int dy, int index);
+  bool verif_move(int dx, int dy, int index);
   void move(int index);
   virtual void lap();
   virtual void init();
