@@ -30,24 +30,23 @@ void cells_world::lap()
 	if (matrix[i][j] && nbNeighbour!=3 && nbNeighbour!=2)
 	  {
 	    matrix[i][j]=false;
-	    if (!vitesse_rapide)
+	    if (!speed)
 	      display();
 	  }
 	else if (!matrix[i][j] && nbNeighbour==3)
 	  {
 	    matrix[i][j]=true;
-	    if (!vitesse_rapide)
+	    if (!speed)
 	      display();
 	  }
-	if (vitesse_rapide)
+	if (speed)
 	  display();
       }
 }
 
-void cells_world::init(bool b)
+void cells_world::init()
 {
   int i,j;
-  vitesse_rapide=b;
   for (int n=0;n<(height*length)/3;n++)
     {
       do {

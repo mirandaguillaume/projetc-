@@ -13,11 +13,10 @@ public:
   int getX()const{return x;}
   int getY()const{return y;}
 
-  void setX(int a){x=a;}
-  void setY(int b){y=b;}
-
+  void setCoord(int x, int y) {this->x=x;this->y=y;}
+  
   actor(int i=0, int j=0) : x(i), y(j) {}
 
-};
+ };
 
 #endif

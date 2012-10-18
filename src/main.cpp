@@ -1,5 +1,5 @@
 #include <iostream>
-#include "cells_world.hpp"
+#include "termites_world.hpp"
 #include <cstdlib>
 #include <ctime>
 
@@ -9,12 +9,9 @@ int main()
 {
   srand(time(NULL));
   int i;
-  cells_world b(4,4);
-  b.init(true);
+  termites_world b(4,4,5,true);
   b.display();
-  for (i=0;(i<4  && !b.plein());i++)
+  for (i=0;i<20;i++)
     b.lap();
-  if (b.plein())
-    cout<<"Le monde est rempli en "<<i<<" tours"<<endl;
   return 0;
 }
