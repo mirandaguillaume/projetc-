@@ -1,4 +1,7 @@
 #include "cells_world.hpp"
+#include <iostream>
+
+using namespace std;
 
 void cells_world::lap()
 {
@@ -19,9 +22,13 @@ void cells_world::lap()
 void cells_world::init()
 {
   int i,j;
-  for (int n=0;n<(height*length)/3;n++)
+  for (int x=0;x<height;x++)
+    for (int y=0;y<length;y++)
+      matrix[x][y]=false;
+  for (int n=0;n<((height*length)/3);n++)
     {
       do {
+	if (n==7) cout<<i<<" "<<j<<endl;
 	i=rand()%height;
 	j=rand()%length;
       } while (matrix[i][j]);

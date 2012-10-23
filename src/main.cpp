@@ -1,9 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "menu.hpp"
+#include "../GUI/menu.hpp"
 
 using namespace std;
+
+
 
 /*void menu(){
 int choix(-1);
@@ -108,9 +110,12 @@ int choix(-1);
   while(choix!=0);
 }
 */
-int main()
+int main(int argc,char * argv[])
 {
   srand(time(NULL));
-  menu();
-  return 0;
+  QApplication app(argc,argv);
+  menu m;
+  m.show();
+  
+  return app.exec();
 }

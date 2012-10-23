@@ -2,7 +2,7 @@
 
 void termites_world::init()
 {
-  int x, y, aux;
+  int x, y;
   for (int i=0;i<nbWood;i++) // placement des bouts des bois
     {
       do 
