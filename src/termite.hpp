@@ -6,16 +6,13 @@
 
 using namespace std;
 
-class termite : public actor {
+class termite : public actor<bool>
+{
 
 public :
 
-  termite(int i = 0, int j = 0, bool c = false) : actor (i,j), carry(c) {}
-  bool getCarry() const {return carry;}
-  void setCarry(bool b) {carry=b;}
-
-private :
-  bool carry;
+  termite(int i = 0, int j = 0, bool c = false) : actor<bool> (c,i,j) {}
+  void setAttrib(bool b) {attrib=b;}
   
 };
 #endif

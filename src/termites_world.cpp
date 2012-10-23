@@ -30,11 +30,11 @@ termites_world::termites_world(int x, int y, int nb_t,int speed,int nbWood) : ac
 bool termites_world::carry(int x, int y = -1)
 {
   if (y == -1)
-    return list[x].getCarry();
+    return list[x].getAttrib();
   for (int i = 0; i < nbActors; i++)
     {
       if (list[i].getX() == x && list[i].getY() == y)
-	return list[i].getCarry();
+	return list[i].getAttrib();
     }
   return false;
 }
@@ -68,15 +68,15 @@ void termites_world::do_move(int dx, int dy, int index)
   matrix[list[index].getX()][list[index].getY()]=-1*(matrix[list[index].getX()][list[index].getY()]+1);
   matrix[dx][dy]=-1*(matrix[dx][dy]+1);
   list[index].setCoord(dx, dy);
-  if (list[index].getCarry() && matrix[dx][dy]!=-10)
+  if (list[index].getAttrib() && matrix[dx][dy]!=-10)
     {    
       matrix[dx][dy]--;
-      list[index].setCarry(false);
+      list[index].setAttrib(false);
     }
-  else if (!list[index].getCarry() && matrix[dx][dy]<-1)
+  else if (!list[index].getAttrib() && matrix[dx][dy]<-1)
     {
       matrix[dx][dy]++;
-      list[index].setCarry(true);
+      list[index].setAttrib(true);
     }
 }
 

@@ -37,7 +37,7 @@ int ants_world::getNb(int x, int y) const {
 
 void ants_world::move(int i){
   int x(list[i].getX()),y(list[i].getY());
-  switch(list[i].getDir())
+  switch(list[i].getAttrib())
     {
     case north: y=(y+1)%length; break;
     case east: x=(x+1)%height; break;
@@ -56,7 +56,7 @@ void ants_world::move(int i){
       y=list[i].getY();
     }
   matrix[x][y]*=(-1);
-  list[i].setDir(white(x,y));
+  list[i].setAttrib(white(x,y));
 }
 
 void ants_world::lap(){

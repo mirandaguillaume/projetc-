@@ -1,4 +1,3 @@
-
 #ifndef DEF_ANT
 #define DEF_ANT
 
@@ -7,25 +6,21 @@
 
 enum direction {north=0,east,south,west};
 
-class ant: public actor{
+class ant: public actor<direction>{
 
 public:
-  ant(int i=0, int j=0):actor(i,j) {
-    orientation=(direction)(rand()%4);
+  ant(int i=0, int j=0):actor<direction>(i,j) {
+    attrib=(direction)(rand()%4);
   }
-
-  direction getDir() const {return orientation;}
   
-  void setDir(bool b)
+  virtual void setAttrib(bool b)
   {
     int i=0;
     if (b) i=1;
     else i=-1;
-    orientation=(direction)(((int)orientation)+ i);
+    attrib=(direction)(((int)attrib)+ i);
   }
 
-private:
-  direction orientation;
 };
 
 #endif
