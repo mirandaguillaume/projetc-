@@ -69,4 +69,4 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
   
   # last thing we have to do is to tell CMake what libraries our executable needs,
   # luckily FIND_PACKAGE prepared QT_LIBRARIES variable for us:
-  TARGET_LINK_LIBRARIES( TestProj ${QT_LIBRARIES} )
+  TARGET_LINK_LIBRARIES( TestProj ${QT_LIBRARIES}  -lsfml-graphics -lsfml-window -lsfml-system)

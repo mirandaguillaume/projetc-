@@ -1,0 +1,3 @@
+Pour le lancer créer un dossier .build puis lancer cmake .. depuis ce dossier 
+Finalement executer make dans le dossier .build 
+L'executable est dans le dossier bin du dossier racine
