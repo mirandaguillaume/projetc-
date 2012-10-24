@@ -1,21 +1,21 @@
 #ifndef DEF_MENU
 #define DEF_MENU
 
-#include <SFML/Graphics.hpp>
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>
 #include "../src/ants_world.hpp"
 #include "../src/termites_world.hpp"
 #include "../src/cells_world.hpp"
+#include "QSFMLCanvas.hpp"
 
-class menu : public QWidget, public sf::RenderWindow
+class menu: public QWidget
 {
 
   Q_OBJECT;
 
 public :
-  menu(unsigned int FrameTime=0);
+  menu();
 
 public slots:
   void launchAnts();
@@ -27,6 +27,7 @@ private :
   QPushButton* termites_button;
   QPushButton* cells_button;
   QPushButton* quit_button;
+  QSFMLCanvas* Affiche_jeu;
 };
 
 #endif

@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-menu::menu(unsigned int FrameTime) : QWidget()
+menu::menu() : QWidget()
 {
   //Set the window's size 
   setFixedSize(600,400);
@@ -59,17 +59,17 @@ void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 
 void menu::launchAnts()
 {
-  int largeur,longueur,nbTours,vitesse,nbActeurs;
+    int largeur,longueur,nbTours,vitesse,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse); 
   do {
     cout<<"Saisissez le nombre de Fourmis : ";cin>>nbActeurs;
   }while(nbActeurs<=0 || nbActeurs>(longueur*largeur));
- ants_world b(longueur,largeur,nbActeurs,vitesse);
- for (int i=0;i<nbTours;i++)
-   {
-     cout<<"Tour n°"<<i+1<<endl;
-     b.lap();
-   }
+  ants_world b(longueur,largeur,nbActeurs,vitesse);
+  for (int i=0;i<nbTours;i++)
+    {
+      cout<<"Tour n°"<<i+1<<endl;
+      b.lap();
+    }
   cout<<"Je lance les ants"<<endl;
 }
 
@@ -85,15 +85,15 @@ void menu::launchTermites()
   do{
     cout<<"Saisissez le nombre de morceaux de bois ! : ";cin>>nbMorceaux;
   }while(nbMorceaux<0);
-termites_world b(longueur,largeur,nbActeurs,nbMorceaux,vitesse);
-for (int i=0;i<nbTours;i++)
-  {
-    cout<<"Entré dans la boucle"<<endl;
-    cout<<"Tour n°"<<i+1<<endl;
-    b.lap();
-    cout<<"Sorti de la boucle"<<endl;
-  }
-cout<<"Je lance les termites"<<endl;
+  termites_world b(longueur,largeur,nbActeurs,nbMorceaux,vitesse);
+  for (int i=0;i<nbTours;i++)
+    {
+      cout<<"Entré dans la boucle"<<endl;
+      cout<<"Tour n°"<<i+1<<endl;
+      b.lap();
+      cout<<"Sorti de la boucle"<<endl;
+    }
+  cout<<"Je lance les termites"<<endl;
 }
 
 void menu::launchCells()
@@ -109,3 +109,4 @@ void menu::launchCells()
     }
   cout<<"Je lance les cells"<<endl;
 }
+

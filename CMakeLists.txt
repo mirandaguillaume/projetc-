@@ -9,6 +9,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
   # note that we don't need \ at the end of line
   SET( SAMPLE_SRCS
        ./GUI/menu.cpp
+       ./GUI/QSFMLCanvas.cpp
        ./src/main.cpp
        ./src/ants_world.cpp
        ./src/cells_world.cpp
@@ -18,6 +19,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
   # another list, this time it includes all header files that should be treated with moc
  SET( SAMPLE_MOC_HDRS
    ./GUI/menu.hpp
+   ./GUI/QSFMLCanvas.cpp
    #     ./src/header2.h
    #     ...
    #     ./src/headerM.h     
