@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "../GUI/menu.hpp"
+#include "../GUI/fenetre.hpp"
 
 using namespace std;
 
@@ -114,8 +114,8 @@ int main(int argc,char * argv[])
 {
   srand(time(NULL));
   QApplication app(argc,argv);
-  menu m;
-  m.show();
+  fenetre f;
+  f.show();
   
   return app.exec();
 }
