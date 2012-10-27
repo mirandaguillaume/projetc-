@@ -11,6 +11,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
        ./GUI/menu.cpp
        ./GUI/fenetre.cpp
        ./GUI/QSFMLCanvas.cpp
+       ./GUI/jeu.cpp
        ./src/main.cpp
        ./src/ants_world.cpp
        ./src/cells_world.cpp
@@ -23,6 +24,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
    ./GUI/menu.hpp
    ./GUI/QSFMLCanvas.hpp
    ./GUI/fenetre.hpp
+   ./GUI/jeu.hpp
    #     ./src/header2.h
    #     ...
    #     ./src/headerM.h     

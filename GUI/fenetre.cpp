@@ -1,5 +1,18 @@
 #include "fenetre.hpp"
 
+void fenetre::toGame(game g)
+{
+  m->hide();
+  j->show();
+  j->setGame(g);
+}
+
+void fenetre::toMenu()
+{
+  j->hide();
+  m->show();
+}
+
 void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 {
   do {
@@ -25,6 +38,7 @@ void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 
 void fenetre::launchAnts()
 {
+  toGame(ants);/*
     int largeur,longueur,nbTours,vitesse,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse); 
   do {
@@ -36,11 +50,13 @@ void fenetre::launchAnts()
       cout<<"Tour n°"<<i+1<<endl;
       b.lap();
     }
-  cout<<"Je lance les ants"<<endl;
+    cout<<"Je lance les ants"<<endl;*/
 }
 
 void fenetre::launchTermites()
 {
+  toGame(termites);
+/*
   int largeur,longueur,nbTours,vitesse,nbMorceaux,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse);
   do {
@@ -59,12 +75,13 @@ void fenetre::launchTermites()
       b.lap();
       cout<<"Sorti de la boucle"<<endl;
     }
-  cout<<"Je lance les termites"<<endl;
+    cout<<"Je lance les termites"<<endl;*/
 }
 
 void fenetre::launchCells()
 { 
-  int largeur,longueur,nbTours,vitesse;
+  toGame(cells);
+  /*int largeur,longueur,nbTours,vitesse;
   parameters(longueur,largeur,nbTours,vitesse); 
   cells_world b(longueur,largeur,vitesse);
   for (int i=0;i<nbTours;i++)
@@ -74,5 +91,6 @@ void fenetre::launchCells()
       b.lap();
     }
   cout<<"Je lance les cells"<<endl;
+  */
 }
 
