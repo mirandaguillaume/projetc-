@@ -18,6 +18,7 @@ public slots:
   void launchAnts();
   void launchTermites();
   void launchCells();
+  void toMenu();
 
 private:
   menu* m;

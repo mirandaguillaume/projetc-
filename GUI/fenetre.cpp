@@ -1,5 +1,17 @@
 #include "fenetre.hpp"
 
+void fenetre::toMenu()
+{
+  j.hide();
+  m.show();
+}
+
+void toGame()
+{
+  m.hide();
+  j.show();
+}
+
 void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 {
   do {
@@ -25,7 +37,8 @@ void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 
 void fenetre::launchAnts()
 {
-    int largeur,longueur,nbTours,vitesse,nbActeurs;
+  toGame();
+  int largeur,longueur,nbTours,vitesse,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse); 
   do {
     cout<<"Saisissez le nombre de Fourmis : ";cin>>nbActeurs;
@@ -41,6 +54,7 @@ void fenetre::launchAnts()
 
 void fenetre::launchTermites()
 {
+  toGame();
   int largeur,longueur,nbTours,vitesse,nbMorceaux,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse);
   do {
@@ -64,6 +78,7 @@ void fenetre::launchTermites()
 
 void fenetre::launchCells()
 { 
+  toGame();
   int largeur,longueur,nbTours,vitesse;
   parameters(longueur,largeur,nbTours,vitesse); 
   cells_world b(longueur,largeur,vitesse);

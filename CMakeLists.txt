@@ -15,6 +15,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
        ./src/ants_world.cpp
        ./src/cells_world.cpp
        ./src/termites_world.cpp
+       ./GUI/jeu.cpp
        
   )
   
@@ -23,6 +24,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
    ./GUI/menu.hpp
    ./GUI/QSFMLCanvas.hpp
    ./GUI/fenetre.hpp
+   ./GUI/jeu.hpp
    #     ./src/header2.h
    #     ...
    #     ./src/headerM.h     
