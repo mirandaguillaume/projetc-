@@ -11,12 +11,13 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
        ./GUI/menu.cpp
        ./GUI/fenetre.cpp
        ./GUI/QSFMLCanvas.cpp
+       ./GUI/jeu.cpp
        ./src/main.cpp
        ./src/ants_world.cpp
        ./src/cells_world.cpp
        ./src/termites_world.cpp
        ./GUI/jeu.cpp
-       
+       #./GUI/Fenetre_jeu.cpp
   )
   
   # another list, this time it includes all header files that should be treated with moc
@@ -25,6 +26,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
    ./GUI/QSFMLCanvas.hpp
    ./GUI/fenetre.hpp
    ./GUI/jeu.hpp
+   ./GUI/Fenetre_jeu.hpp
    #     ./src/header2.h
    #     ...
    #     ./src/headerM.h     

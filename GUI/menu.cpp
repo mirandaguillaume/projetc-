@@ -8,8 +8,8 @@ menu::menu(QWidget* parent) : QWidget(parent)
   if (parent!=NULL)
     {
       //Set the window's size 
+      parent -> setFixedSize(600,400);
       setFixedSize(600,400);
-
       //Creation of the buttons
       ants_button = new QPushButton ("Ants' Life",this);
       termites_button = new QPushButton ("Termites' Life",this);

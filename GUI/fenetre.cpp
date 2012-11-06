@@ -1,15 +1,29 @@
 #include "fenetre.hpp"
 
-void fenetre::toMenu()
+void fenetre::toGame(game g)
 {
-  j.hide();
-  m.show();
+  int height(0),length(0);
+  while (height<=0)
+    {
+      height = QInputDialog::getInteger(this, "Longueur", "Longueur voulue");
+      if (height<=0) QMessageBox::critical(this,"Largeur","La longueur ne peut pas être négative ou nulle");
+    } 
+  while (length<=0)
+    { 
+      length = QInputDialog::getInteger(this, "Largeur", "Longueur voulue");
+      if (length<=0) QMessageBox::critical(this,"Largeur","La largeur ne peut pas être négative ou nulle");
+    }
+  m -> hide();
+  j->show();
+  j->setSize(this,length,height);
+  j->setGame(g);
 }
 
-void toGame()
+void fenetre::toMenu()
 {
-  m.hide();
-  j.show();
+  j->hide();
+  setFixedSize(600,400);
+  m->show();
 }
 
 void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
@@ -37,8 +51,8 @@ void parameters(int &longueur,int& largeur,int &nbTours,int &vitesse)
 
 void fenetre::launchAnts()
 {
-  toGame();
-  int largeur,longueur,nbTours,vitesse,nbActeurs;
+  toGame(ants);/*
+    int largeur,longueur,nbTours,vitesse,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse); 
   do {
     cout<<"Saisissez le nombre de Fourmis : ";cin>>nbActeurs;
@@ -49,12 +63,13 @@ void fenetre::launchAnts()
       cout<<"Tour n°"<<i+1<<endl;
       b.lap();
     }
-  cout<<"Je lance les ants"<<endl;
+    cout<<"Je lance les ants"<<endl;*/
 }
 
 void fenetre::launchTermites()
 {
-  toGame();
+  toGame(termites);
+/*
   int largeur,longueur,nbTours,vitesse,nbMorceaux,nbActeurs;
   parameters(longueur,largeur,nbTours,vitesse);
   do {
@@ -73,13 +88,13 @@ void fenetre::launchTermites()
       b.lap();
       cout<<"Sorti de la boucle"<<endl;
     }
-  cout<<"Je lance les termites"<<endl;
+    cout<<"Je lance les termites"<<endl;*/
 }
 
 void fenetre::launchCells()
 { 
-  toGame();
-  int largeur,longueur,nbTours,vitesse;
+  toGame(cells);
+  /*int largeur,longueur,nbTours,vitesse;
   parameters(longueur,largeur,nbTours,vitesse); 
   cells_world b(longueur,largeur,vitesse);
   for (int i=0;i<nbTours;i++)
@@ -89,5 +104,6 @@ void fenetre::launchCells()
       b.lap();
     }
   cout<<"Je lance les cells"<<endl;
+  */
 }
 
