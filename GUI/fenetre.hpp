@@ -14,10 +14,12 @@
 class fenetre : public QWidget
 {
   Q_OBJECT;
+
 public : 
   fenetre() : QWidget() {m=new menu(this);j=new jeu(this); j->hide();} 
   ~fenetre() {if (m) delete m; if (j) delete j;}
   void toGame(game g);
+
 public slots:
   void launchAnts();
   void launchTermites();

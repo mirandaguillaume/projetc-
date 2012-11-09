@@ -1,19 +1,18 @@
 #include "jeu.hpp"
+#include <iostream>
 
 #define HEIGHT_CASE 30
 #define LENGTH_CASE 30
 #define X_POINT_ACCROCHE 200
 #define Y_POINT_ACCROCHE 50
 
-jeu::jeu(QWidget* parent,int height,int length) : QWidget(parent)
+jeu::jeu(QWidget* parent) : QWidget(parent)
 {
   if (parent==NULL) parent=this; 
   //Set window's size
-  setFixedSize(200+(50*length),220+(50*height));
-  
-  QSize s(height*HEIGHT_CASE,length*LENGTH_CASE);
+  setMinimumSize(600,400);
   QPoint p(X_POINT_ACCROCHE,Y_POINT_ACCROCHE);
-      
+  QSize s(1200,800);
   plateau = new Fenetre_jeu(this,p,s);
   play_button = new QPushButton("Play",this);
   fast_button = new QPushButton("Fast",this);
@@ -37,13 +36,14 @@ jeu::jeu(QWidget* parent,int height,int length) : QWidget(parent)
   connect(cancel_button,SIGNAL(clicked()),parent,SLOT(toMenu()));
 }
 
-void jeu::setSize(QWidget* parent,int height,int length)
+void jeu::setSize(QWidget* parent,int height,int length,int nbActors)
 {
-  parent->setFixedSize(200+(35*length),220+(35*height));
-  setFixedSize(200+(35*length),220+(35*height));
-  plateau -> setFixedSize(length*LENGTH_CASE,height*HEIGHT_CASE);
-  plateau -> move(X_POINT_ACCROCHE,Y_POINT_ACCROCHE);
-  
+ parent->setFixedSize(200+(35*length),50+(35*height));
+ parent->setMinimumSize(600,400);
+ this->setFixedSize(200+(35*length),50+(35*height));
+ setMinimumSize(600,400);
+ plateau -> setFixedSize(length*LENGTH_CASE,height*HEIGHT_CASE);
+ plateau -> move(X_POINT_ACCROCHE,Y_POINT_ACCROCHE);
 }
 
 void jeu::setGame(game g)

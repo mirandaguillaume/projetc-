@@ -17,7 +17,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
        ./src/cells_world.cpp
        ./src/termites_world.cpp
        ./GUI/jeu.cpp
-       #./GUI/Fenetre_jeu.cpp
+       ./GUI/Fenetre_jeu.cpp
   )
   
   # another list, this time it includes all header files that should be treated with moc

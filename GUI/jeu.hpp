@@ -10,10 +10,10 @@ enum game { cells , ants , termites };
 class jeu : public QWidget
 {
 public :
-  jeu(QWidget* parent = NULL,int heigth =10,int length =10);
+  jeu(QWidget* parent = NULL);
   ~jeu();
   void setGame(game g);
-  void setSize(QWidget* parent,int height,int length);
+  void setSize(QWidget* parent,int height,int length,int nbActors);
 
 private:
   QPushButton* play_button;
