@@ -19,7 +19,7 @@ private:
   QPushButton* play_button;
   QPushButton* fast_button;
   QPushButton* cancel_button;
-  QSFMLCanvas* plateau;
+  Fenetre_jeu* plateau;
   game g;
 };
 

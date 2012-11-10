@@ -38,12 +38,16 @@ jeu::jeu(QWidget* parent) : QWidget(parent)
 
 void jeu::setSize(QWidget* parent,int height,int length,int nbActors)
 {
- parent->setFixedSize(200+(35*length),50+(35*height));
- parent->setMinimumSize(600,400);
- this->setFixedSize(200+(35*length),50+(35*height));
+ parent-> setFixedSize(200+(35*length),50+(35*height));
+ parent-> setMinimumSize(600,400);
+ setFixedSize(200+(35*length),50+(35*height));
  setMinimumSize(600,400);
  plateau -> setFixedSize(length*LENGTH_CASE,height*HEIGHT_CASE);
+ plateau -> resize(length*LENGTH_CASE,height*HEIGHT_CASE);
  plateau -> move(X_POINT_ACCROCHE,Y_POINT_ACCROCHE);
+ plateau -> setHeight(height);
+ plateau -> setLength(length);
+ plateau -> initialise();
 }
 
 void jeu::setGame(game g)
@@ -51,6 +55,7 @@ void jeu::setGame(game g)
 
 jeu::~jeu()
 {
+  if (plateau) delete plateau;
   if (play_button) delete play_button;
   if (fast_button) delete fast_button;
   if (cancel_button) delete cancel_button;

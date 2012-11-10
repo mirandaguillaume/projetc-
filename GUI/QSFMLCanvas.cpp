@@ -79,14 +79,7 @@ void QSFMLCanvas::showEvent(QShowEvent*)
 
 
 void QSFMLCanvas::OnInit()
-{
-  Clear(BLANC);
-  for (int i=0;i<4;i++)
-    {
-      Draw(sf::Shape::Line(30*i,0,30*i,4*30,1,NOIR));
-      Draw(sf::Shape::Line(0,30*i,30*4,30*i,1,NOIR));
-    }
-}
+{}
 
 ////////////////////////////////////////////////////////////
 /// Called when the widget needs to be painted ;
